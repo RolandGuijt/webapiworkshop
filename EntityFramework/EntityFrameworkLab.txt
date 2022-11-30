@@ -2,7 +2,7 @@ This lab will teach you the Entity Framework (EF) basics while creating a consol
 
 - Create a new console application.
 - Add the NuGet package Microsoft.EntityFrameworkCore.Sqlite. This will install Sqlite support for EF but also entity framework itself which depends on it. Sqlite is a relational database that stores data in a single file.
-- Add the NuGet package Microsoft.EntityFramework.Design. This adds the support for the EF tooling.
+- Add the NuGet package Microsoft.EntityFrameworkCore.Design. This adds the support for the EF tooling.
 - Open a terminal (located in the View menu) and run the following command: dotnet tool install -g dotnet-ef
 - This will install the tooling we'll need.
 
