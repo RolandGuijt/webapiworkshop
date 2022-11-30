@@ -1,0 +1,29 @@
+Lab: Clients
+
+- Create a new project in the solution. Make it a class library.
+- Move PersonDto and maybe other DTOs you might have to the class library.
+- In the API project, add a project reference (right click on dependencies) to the new class library.
+- Make sure the API project doesn't have the DTO classes anymore.
+- Build and fix any namespace issues.
+- Run and remember the URL the API is running on.
+
+- Add another project, a Console Application.
+- Create a new instance of HttpClient. Remember to dispose it. A good way to not forget is to put "using" in front of the variable declaration.
+- Set the BaseAddress to the URL you remembered.
+- Call the GetAsync method (should be awaited) on it providing the relative URL of the endpoint of the persons controller (e.g. /persons)
+- Capture the object returned from the method in a variable called response.
+- Call EnsureSuccessStatusCode on it to ensure success. This will throw an exception is something goes wrong.
+- Deserialize the response:
+	var persons = await response.Content.ReadFromJsonAsync<PersonDto[]>();
+- Show all data of the persons in a list.
+
+- In addition to this, add an option (using a user menu e.g.) to retrieve a specific person using the id, using the above as a guideline.
+
+- Add functionality to add a new person, use the following steps:
+	- Create a PersonDto object
+	- Fill out the properties of it
+	- Call PostAsync on HttpClient providing the person controller URL as the first parameter and the personDto as the second.
+	- Capture the response object and deserialize the person.
+	- Show the id and name of the posted person.
+
+

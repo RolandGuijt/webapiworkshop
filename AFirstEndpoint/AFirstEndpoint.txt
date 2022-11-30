@@ -1,0 +1,10 @@
+A First Endpoint
+
+- Create a new project. Pick "ASP.NET Core Empty" from the templates list. Make sure you use the one with C#.
+- Open Program.cs and make sure you understand it.
+- Under properties, take a look at launchsettings.json. It has the URLs in it where the application will run on for IIS and Kestrel.
+- Run the application and with a browser hit the url found in launchsettings.json. Do you see the expected result?
+
+- Create a class with some properties (Person, Pet, Food or whatever)
+- Add a new endpoint, use /data this time. Instead of a string return an instance of the class in the endpoint lambda with some random property values. (Hint: use an object initializer: new Person { Name = "Jane" }
+- Run the application and hit the new endpoint with a browser. Were you expecting this?

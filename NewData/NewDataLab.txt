@@ -1,0 +1,38 @@
+Lab: Introducing New Data
+
+- Again continuing the work on the last project.
+- Add a method to PersonRepository:
+
+        public PersonDto AddPerson(PersonDto person)
+        {
+            var newEntity = new Person { Name = person.Name, City= person.City };
+            _Context.Persons.Add(newEntity);
+            _Context.SaveChanges();
+            person.Id = newEntity.Id;
+            return person;
+        }
+
+- Note that we're not passing in an Id in the new entity object. That is because the database will determine the new Id.
+- But we want the caller to know what the new id is. That's why we're returning the PersonDto with it.
+- Update the IPersonRepository interface with the new method.
+
+- In PersonController, add an action that introduces a new person:
+
+        [HttpPost]
+        public IActionResult PostPerson(PersonDto person)
+        {
+            _Repo.AddPerson(person);
+            return CreatedAtAction(nameof(GetPerson), new {personId = person.Id}, person);
+        }
+
+- Note that the person object used as the parameter will come from model binding.
+- We're using the IActionResult CreatedAtAction to return a 201 (created) status code while leveraging HATEOAS: providing a URL to the new person in the response.
+- Run the application and try it out using Swagger.
+- Note that Swagger is expecting a 200. 
+- Change that by adding the attribute:
+	        [ProducesResponseType(201)]
+
+- We are reusing PersonDto here. That is convenient but for security reasons it is recommended to use types that just contain what the user of the API is allowed to post. See if you can make it work with a dedicated type for posting that doesn't contain the Id property.
+
+- Add support for modifying a person in the application using a method in the controller decorated with [HttpPut]
+- Add support for deleting a person in the application using a method in the controller decorated with [HttpDelete]

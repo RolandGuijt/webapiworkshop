@@ -1,0 +1,8 @@
+Lab: data validation
+
+- Use the project from the previous lab.
+- In the class that is used as a parameter in the Post action decorate the Name property with [Required].
+- Run the application and in the Swagger UI generate a POST, omitting name.
+- Observe the response
+
+- Experiment with other validation attributes such as [Range]

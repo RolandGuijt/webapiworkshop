@@ -1,0 +1,28 @@
+- Create a new "ASP.NET Core Web API" project in Visual Studio. Make sure you choose the one that uses C#.
+- On the "Additional Information" screen, make sure "Configure for HTTPS", "Use controllers" and "Enable OpenAPI support is enabled.
+- Examine the program.cs class. There's a section that adds services to the dependency injection container and a section that sets up the ASP.NET Core pipeline.
+- Take a look at the Controller in the Controllers folder.
+- Make sure you understand how this all works. Run the application to see if it does what you expect.
+
+- Remove the controller and the WeatherForecast class.
+- Copy over the Database and Migrations folder from the previous project as well as the PersonDto.
+- Add the Microsoft.EntityFrameworkCore.Design and Microsoft.EntityFrameworkCore.Sqlite NuGet packages.
+- Create the database by executing "dotnet ef database update".
+- Under the controllers folder add a new class PersonController that derives from Controller.
+- Decorate the class with [ApiController] and [Route("Persons")]
+- Create a constructor that accepts an IPersonRepository object. This will be provided by DI. Store it in a field.
+- Create a method (called an action) GetPersons that returns an IActionResult object.
+- Return the persons:
+	return Ok(_Repo.GetPersons());
+- Decorate the method with [HttpGet]
+- Add another action GetPerson
+- Decorate it with [HttpGet("{personId}"]
+- Here's the signature:
+	 public IActionResult GetPerson(int personId)
+- Implement the method in the same way we did in the previous project. Note that a NotFound method is present on the Controller base class that returns a NotFound IActionResult.
+- Register the PersonDbContext and the IPersonRepository in the dependency injection container.
+
+- Run and test it using the Swagger UI this time.
+- Retrace your steps. Is it all clear and are you still on board? If not, yell!
+
+

@@ -1,0 +1,20 @@
+Dependency injection lab
+
+- Continue with the project from the previous lab (with the / and /data endpoints).
+- Add a class with a method that returns a collection of the entity you chose (person, pet, ..). Name it [entityname]Repository. E.g. PersonRepository.
+- In program.cs under the line that creates the builder, register the class in the dependency injection container. For example:
+builder.Services.AddScoped<PersonRepository>();
+- Now let the lambda of the /data endpoint accept an instance of the repository and call the method inside the lambda. For example: 
+app.MapGet("/data", (PersonRepository repo) => repo.GetPersons());
+- Run the application and access /data in the browser. Observe what is returned.
+
+- This part was very scripted. Be sure you understand what you did before continuing.
+
+- Create an interface out of the repository class that contains the method using the same signature (return type and parameters). And easy way to do it is to put the cursor over the class name and press the lightbulb that appears. Select "Extract interface". But you can also do it manually of course.
+- Let the repository class implement the interface.
+- In program.cs now register the class using the interface it implements. E.g.:
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+- In the /data endpoint, now accept the interface type instead of the concrete class.
+- Run and notice that the results are the same.
+
+- What have we gained by adding the interface?
