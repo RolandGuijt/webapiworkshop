@@ -1,7 +1,7 @@
 Lab: Working with route parameters and non-default statuscodes.
 
 - We're extending the functionality of the previous lab project.
-- Add a method GetPerson to the PersonRepository class that accepts a personId int as a parameter, retrieves the relevant person and returns a PersonDto object.
+- Add a method GetPerson to the PersonRepository class that accepts a personId int as a parameter, retrieves the relevant person and returns a PersonDto object. If the person is not found, return null. Hint: use the FirstOrDefault or SingleOrDefault LINQ extension method.
 - Update the interface.
 
 - Add a new endpoint:
