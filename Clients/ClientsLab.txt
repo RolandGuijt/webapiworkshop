@@ -22,7 +22,7 @@ Lab: Clients
 - Add functionality to add a new person, use the following steps:
 	- Create a PersonDto object
 	- Fill out the properties of it
-	- Call PostAsync on HttpClient providing the person controller URL as the first parameter and the personDto as the second.
+	- Call PostAsJsonAsync on HttpClient providing the person controller URL as the first parameter and the personDto as the second.
 	- Capture the response object and deserialize the person.
 	- Show the id and name of the posted person.
 

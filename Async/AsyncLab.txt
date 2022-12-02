@@ -3,7 +3,7 @@ Lab: Async
 - We're refactoring the Web API we have so far to support asynchronous operations. That way it can handle more concurrent requests.
 - We start with PersonRepository. Make the AddPerson method async and let it return a Task<PersonDto> (or whatever type you have as a DTO)
 - Instead of calling SaveChanges on the dbContext object, call SaveChangesAsync. This returns a Task.
-- Await the call the SaveChangesAsync.
+- Await the call to SaveChangesAsync.
 
 - Make GetPerson async as well using the same trick. The method call to await is _Context.Persons.SingleOrDefaultAsync (instead of SingleOrDefault)
 - Same for GetPersons. The way to do it here is to first retrieve the persons and then do the Select:
